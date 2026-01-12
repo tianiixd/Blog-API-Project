@@ -1,4 +1,5 @@
-# This is A Blog Website, My First REST API project. This simulates a CRUD APP but only the data is an array or came from memory data
+# My First REST API project. 
+This simulates a CRUD APP but only the data is an array or came from memory data
 
 Features
 
