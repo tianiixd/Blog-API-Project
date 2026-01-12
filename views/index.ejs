@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog</title>
     <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
   </head>
 
@@ -20,10 +26,36 @@
           <p class="content"><%=post.content%></p>
           <small>By: <%=post.author%> </small>
           <a class="edit" href="/edit/<%= post.id %>">Edit</a>
-          <a class="delete" href="/api/posts/delete/<%= post.id %>">Delete</a>
+          <a
+            class="delete"
+            href="javascript:void(0)"
+            onclick="confirmDelete('<%= post.id %>')"
+          >
+            Delete
+          </a>
         </li>
         <% }); %>
       </ul>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      function confirmDelete(id) {
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // ✅ CHANGED: Since your route is a GET route that redirects,
+            // we simply navigate the browser to that URL.
+            window.location.href = `/api/posts/delete/${id}`;
+          }
+        });
+      }
+    </script>
   </body>
 </html>
