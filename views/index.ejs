@@ -50,8 +50,6 @@
           confirmButtonText: "Yes, delete it!",
         }).then((result) => {
           if (result.isConfirmed) {
-            // ✅ CHANGED: Since your route is a GET route that redirects,
-            // we simply navigate the browser to that URL.
             window.location.href = `/api/posts/delete/${id}`;
           }
         });
